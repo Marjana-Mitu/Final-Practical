@@ -1,48 +1,49 @@
 function connect() {
-    const searchTerm = document.getElementById("searchBox").value;
+    var searchTerm = document.getElementById("searchBox").value.trim();
     document.getElementById("searchBox").value = "";
-    const url = https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm};
+    var url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`;
 
-    fetch (url)
+    fetch(url)
         .then(res => res.json())
-        .then(data => display(data));
+        .then(data => display(data))
+        .catch(err => console.error("Error fetching data:", err));
 }
 
 function display(data) {
-    const meals = data.meals;
-    const displayArea = document.getElementById("displayArea");
-    displayArea.innerHTML = ""; // Clear previous results
+    var allMeals = data.meals; 
+    var displayArea = document.getElementById("displayArea");
+    displayArea.textContent = ""; 
 
-    if (!meals) {
-        displayArea.innerHTML = <p>No meals found.</p>;
+    if (!allMeals) {
+        displayArea.textContent = "No meals found!";
         return;
     }
 
-    meals.slice(0, 5).forEach(meal => {
-        const mealDiv = document.createElement("div");
+    for (var i = 0; i < Math.min(allMeals.length, 5); i++) {
+        var mealDiv = document.createElement("div");
         mealDiv.innerHTML = `
-            <h3>${meal.strMeal} (ID: ${meal.idMeal})</h3>
-            <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-            <p>${meal.strInstructions.slice(0, 150)}...</p>
+            <h3>Meal Title: ${allMeals[i].strMeal}</h3>
+            <img src="${allMeals[i].strMealThumb}" alt="${allMeals[i].strMeal}">
+            <p>Cooking Instructions: ${allMeals[i].strInstructions}</p>
         `;
         mealDiv.classList.add("meal-card");
         displayArea.appendChild(mealDiv);
-    });
+    }
 
-    if (meals.length > 5) {
-        const showAllButton = document.createElement("button");
+    if (allMeals.length > 5) {
+        var showAllButton = document.createElement("button");
         showAllButton.textContent = "SHOW ALL";
-        showAllButton.onclick = () => showAll(meals);
+        showAllButton.onclick = () => showAll(allMeals); // Pass `allMeals` to `showAll`
         displayArea.appendChild(showAllButton);
     }
 }
 
 function showAll(meals) {
-    const displayArea = document.getElementById("displayArea");
-    displayArea.innerHTML = ""; // Clear current results
+    var displayArea = document.getElementById("displayArea");
+    displayArea.innerHTML = "";
 
     meals.forEach(meal => {
-        const mealDiv = document.createElement("div");
+        var mealDiv = document.createElement("div");
         mealDiv.innerHTML = `
             <h3>${meal.strMeal} (ID: ${meal.idMeal})</h3>
             <img src="${meal.strMealThumb}" alt="${meal.strMeal}">

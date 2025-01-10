@@ -1,32 +1,44 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgb(204, 239, 237);
 }
 
 header, footer {
     text-align: center;
-    background: #333;
+    background: #1c5086;
     color: #fff;
     padding: 10px 0;
 }
 
 main {
-    padding: 20px;
+    padding: 30px;
 }
 
 #searchBox {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 16px;
+    border: 2px solid #0077b6;
+    border-radius: 5px;
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #05212d;
 }
 
 #displayArea {
@@ -36,16 +48,26 @@ button {
 }
 
 .meal-card {
-    border: 1px solid #ddd;
+    border: 2px solid #0077b6;
     padding: 15px;
-    background: #f9f9f9;
+    background: beige;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.meal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .meal-card img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
 }
 
 .meal-card h3 {
     margin: 10px 0;
+    color: #333;
 }
