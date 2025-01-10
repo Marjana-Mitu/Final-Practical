@@ -1,9 +1,9 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(204, 239, 237);
+    background-color: rgb(220, 245, 241);
 }
 
 header, footer {
@@ -50,7 +50,7 @@ button:hover {
 .meal-card {
     border: 2px solid #0077b6;
     padding: 15px;
-    background: beige;
+    background: rgb(241, 241, 226);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;

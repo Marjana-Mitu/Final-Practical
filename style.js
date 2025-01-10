@@ -14,11 +14,6 @@ function display(data) {
     var displayArea = document.getElementById("displayArea");
     displayArea.textContent = ""; 
 
-    if (!allMeals) {
-        displayArea.textContent = "No meals found!";
-        return;
-    }
-
     for (var i = 0; i < Math.min(allMeals.length, 5); i++) {
         var mealDiv = document.createElement("div");
         mealDiv.innerHTML = `
@@ -33,7 +28,7 @@ function display(data) {
     if (allMeals.length > 5) {
         var showAllButton = document.createElement("button");
         showAllButton.textContent = "SHOW ALL";
-        showAllButton.onclick = () => showAll(allMeals); // Pass `allMeals` to `showAll`
+        showAllButton.onclick = () => showAll(allMeals); 
         displayArea.appendChild(showAllButton);
     }
 }
